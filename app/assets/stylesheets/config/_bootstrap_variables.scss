@@ -23,3 +23,12 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+$theme-colors: (
+  "primary": $electric-blue,
+  "secondary": $screen-black,
+  "success": $electric-blue,
+  "danger": $popcorn-yellow,
+  "warning": $popcorn-yellow,
+  "info": $electric-blue,
+  "light": $white
+  ) !default;
