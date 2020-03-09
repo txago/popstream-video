@@ -15,11 +15,9 @@
       <div class="card-element mb-4">
         <!-- play poster -->
         <div class="card-play-wrap">
-          <% if movie.photo.attached? %>
           <%= link_to movie.link, target: :_blank do %>
-          <%= cl_image_tag movie.photo.key, width: 200, height: 300, crop: :fill, class: 'card-thumb' %>
-          <div class="card-play"><i class="fas fa-play"></i></div>
-          <% end %>
+            <%= image_tag movie.image_url, class: 'card-thumb' %>
+            <div class="card-play"><i class="fas fa-play"></i></div>
           <% end %>
         </div>
         <!-- end play poster -->

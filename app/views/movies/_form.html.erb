@@ -10,6 +10,7 @@
 <%= f.input :duration, label: 'Duração (em minutos corridos, ex: 126)' %>
 <%= f.association :director, label: 'Escolha diretor(a)' %>
 <%= f.association :genre, label: 'Escolha gênero' %>
-<%= f.input :photo, as: :file, label: 'Poster (min. 500x750px)' %>
-<%= f.button :submit, class: 'btn btn-lg btn-warning' %>
+<%= f.hidden_field :image, value: movie.cached_image_data %>
+<%= f.file_field :image %>
+<%= f.button :submit, class: 'btn btn-lg btn-block btn-warning mt-4' %>
 <% end %>
