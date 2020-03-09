@@ -1,0 +1,19 @@
+<!-- page container -->
+<div class="container mb-4">
+  <!-- page title -->
+  <div class="row d-flex justify-content-center my-4">
+    <div class="col-12 col-sm-12 col-md-10 col-lg-8 text-center">
+      <h1 class="title">Editar <%= @movie.name %></h1>
+    </div>
+  </div>
+  <!-- form container -->
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+      <%= render 'form', movie: @movie %>
+      <%= link_to 'Voltar para lista', movies_path, class: 'my-4 btn btn-primary' %>
+      <%= link_to movie_path(@movie), method: :delete, data: { confirm: "Tem certeza que deseja remover?" }, class: 'btn btn-warning' do %>Remover <i class="far fa-trash-alt"></i><% end %>
+    </div>
+  </div>
+  <!-- end form container -->
+</div>
+<!-- end container -->

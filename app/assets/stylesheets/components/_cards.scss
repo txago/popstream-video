@@ -1,51 +1,78 @@
-.card-category {
-  background-size: cover;
-  background-position: center;
-  height: 230px;
-  display: flex;
-  border-radius: 7px;
+.card-element {
+  background-color: $white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: 115px;
-  margin: 3px
-}
+  transition: all 0.2s ease-in-out;
 
-// .cards {
-//   display: grid;
-//   grid-template-columns: 1fr 1fr 1fr;
-//   grid-gap: 16px;
-// }
+  &:hover {
+    transform: scale(1.1);
+  }
 
-// Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
-  .cards {
-    grid-template-columns: 1fr;
+  .card-play-wrap {
+    position: relative;
+
+    .card-thumb {
+      width: 100%;
+      height: auto;
+    }
+
+    .card-play {
+      transition: all 0.2s ease-in-out;
+      width: 25%;
+      height: 16.5%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $popcorn-yellow;
+      background-color: $electric-blue;
+    }
+
+    &:hover {
+
+      .card-play {
+        color: $electric-blue;
+        background-color: $popcorn-yellow;
+      }
+
+    }
+  }
+
+  .card-info {
+    padding: 1rem;
+    overflow: hidden;
+
+    .title {
+      color: $black;
+      font-size: 18px;
+      font-weight: $font-weight-bold;
+    }
+
+    p {
+      margin-bottom: 0.5em;
+    }
   }
 }
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
+.card-director {
+  color: $black;
+  background-color: $white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .cards {
-    grid-template-columns: 1fr 1fr;
+  .card-thumb {
+    width: 100%;
+    height: auto;
   }
-}
 
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
+  .card-info {
+    padding: 1rem 1rem 0 1rem;
+    overflow: hidden;
 
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    .title {
+      color: $black;
+      font-size: 18px;
+      font-weight: $font-weight-bold;
+    }
   }
 }

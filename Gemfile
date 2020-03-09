@@ -3,18 +3,25 @@ ruby '2.6.5'
 
 gem 'bootsnap', require: false
 gem 'devise'
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
 gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.4.1'
 gem 'redis'
-gem "algoliasearch-rails"
+gem 'algoliasearch-rails'
+gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'hogan_assets'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.12.0'
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'cloudinary'
+gem 'country_select', '~> 3.1', '>= 3.1.1'
+gem "shrine", "~> 3.0"
+gem "shrine-cloudinary", "~> 1.1"
 
 group :development do
   gem 'web-console', '>= 3.3.0'
