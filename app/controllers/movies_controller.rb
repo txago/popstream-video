@@ -21,7 +21,7 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      redirect_to movies_path
+      redirect_to edit_movies_path
     else
       render :new
     end
@@ -29,7 +29,7 @@ class MoviesController < ApplicationController
 
   def destroy
     @movie.destroy
-    redirect_to movies_path
+    redirect_to edit_movies_path
   end
 
   private

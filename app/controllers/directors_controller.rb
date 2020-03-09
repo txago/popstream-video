@@ -21,7 +21,7 @@ class DirectorsController < ApplicationController
   def create
     @director = Director.new(director_params)
     if @director.save
-      redirect_to directors_path
+      redirect_to edit_directors_path
     else
       render :new
     end
@@ -29,7 +29,7 @@ class DirectorsController < ApplicationController
 
   def destroy
     @director.destroy
-    redirect_to directors_path
+    redirect_to edit_directors_path
   end
 
   private

@@ -1,1 +1,20 @@
-// Specific CSS for your home-page
+.title {
+  font-size: 36px;
+  font-weight: $font-weight-bolder;
+  letter-spacing: -0.015em;
+}
+
+input[type="text"] {
+  font-family: $headings-font-family;
+  font-weight: 300;
+}
+
+#hits {
+  .ais-hits {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+

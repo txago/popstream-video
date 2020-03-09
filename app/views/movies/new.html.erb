@@ -3,28 +3,28 @@
   <!-- page title -->
   <div class="row d-flex justify-content-center my-4">
     <div class="col-12 col-sm-12 col-md-10 col-lg-8 text-center">
-      <h1>Add new movie</h1>
+      <h1 class="title">Adicione um novo filme</h1>
     </div>
   </div>
   <!-- form container -->
   <div class="row justify-content-center">
     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
       <%= simple_form_for @movie do |f| %>
-      <%= f.input :name, label: 'Name' %>
-      <%= f.input :description, as: :text, label: 'Description' %>
-      <%= f.input :year, label: 'Year' %>
-      <%= f.input :platform, label: 'Platform name' %>
-      <%= f.input :link, label: 'Watch link' %>
-      <%= f.input :trailer_url, label: 'Trailer url link' %>
-      <%= f.input :country, label: 'Country' %>
-      <%= f.input :imdb_score, label: 'iMDB score (without .point)' %>
-      <%= f.input :duration, label: 'Duration (in minutes)' %>
-      <%= f.association :director, label: 'Director' %>
-      <%= f.association :genre, label: 'Genre' %>
-      <%= f.input :photo, as: :file %>
-      <%= f.submit :submit, class: 'btn btn-lg btn-warning' %>
+      <%= f.input :name, label: 'Nome' %>
+      <%= f.input :description, as: :text, label: 'Descrição' %>
+      <%= f.input :year, label: 'Ano' %>
+      <%= f.input :platform, label: 'Nome da plataforma de stream' %>
+      <%= f.input :link, label: 'Link para assistir na plataforma' %>
+      <%= f.input :trailer_url, label: 'Link do trailer' %>
+      <%= f.input :country, label: 'País' %>
+      <%= f.input :imdb_score, label: 'Nota iMDB (remover ponto, ex: 8.7 = 87)' %>
+      <%= f.input :duration, label: 'Duração (em minutos corridos, ex: 126)' %>
+      <%= f.association :director, label: 'Escolha diretor(a)' %>
+      <%= f.association :genre, label: 'Escolha gênero' %>
+      <%= f.file_field :photo, as: :file, label: 'Poster (min. 500x750px)' %>
+      <%= f.button :submit, 'Adicionar', class: 'btn btn-lg btn-warning' %>
       <% end %>
-      <%= link_to 'Back to movies edit list', edit_movies_path, class: 'my-4 btn btn-primary' %>
+      <%= link_to 'Voltar para lista de edição', edit_movies_path, class: 'my-4 btn btn-primary' %>
     </div>
   </div>
   <!-- end form container -->

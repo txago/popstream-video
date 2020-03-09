@@ -1,4 +1,4 @@
 AlgoliaSearch.configuration = {
-  application_id: 'HG1OY9O7CS',
-  api_key: 'f2e57f1cfe94fff29d052d6eeee0affc'
+  application_id: ENV['ALGOLIASEARCH_APPLICATION_ID'],
+  api_key: ENV['ALGOLIASEARCH_API_KEY']
 }

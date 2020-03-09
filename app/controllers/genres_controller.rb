@@ -21,7 +21,7 @@ class GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to genres_path
+      redirect_to edit_genres_path
     else
       render :new
     end
@@ -29,7 +29,7 @@ class GenresController < ApplicationController
 
   def destroy
     @genre.destroy
-    redirect_to genres_path
+    redirect_to edit_genres_path
   end
 
   private

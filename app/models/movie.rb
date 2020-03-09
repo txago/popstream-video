@@ -18,7 +18,7 @@ class Movie < ApplicationRecord
   after_touch :index!
 
   algoliasearch per_environment: true do
-    attributes :photo, :id, :created_at, :name, :description, :year, :platform, :link, :country, :imdb_score, :duration, :trailer_url, :genre_id, :director_id
+    attributes :photo, :id, :created_at, :name, :description, :year, :platform, :link, :country, :imdb_score, :duration, :genre_id, :director_id
 
     attribute :director do
       { name: director.name }
@@ -32,10 +32,8 @@ class Movie < ApplicationRecord
       created_at.to_i
     end
 
-    searchableAttributes ['name', 'description', 'country', :year, :duration, 'platform']
+    searchableAttributes [:name, :description, :country, :director, :genre, :year, :duration, :platform, :link, :photo]
 
     customRanking ['desc(imdb_score)']
-
-    separatorsToIndex '+#$'
   end
 end

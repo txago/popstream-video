@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :movies
   end
   resources :movies
-  get '/edit_directors', to: "directors#edit"
-  get '/edit_genres', to: "genres#edit"
-  get '/edit_movies', to: "movies#edit"
+  get '/edit-directors', to: "directors#edit"
+  get '/edit-genres', to: "genres#edit"
+  get '/edit-movies', to: "movies#edit"
 end

@@ -1,24 +1,37 @@
 <!-- page container -->
-<div class="container">
+<div class="container-fluid">
   <!-- page header -->
-  <div class="row d-flex justify-content-center">
+  <div class="row d-flex justify-content-center my-4">
     <div class="col-12 col-sm-12 col-md-10 col-lg-8 text-center">
-      <h1 class="my-4">O que você quer assistir?</h1>
+      <h1 class="my-4 title">O que você quer assistir?</h1>
       <input id="q" class="form-control form-control-lg my-4" value="" type="text">
     </div>
   </div>
+
+  <!-- algolia results div -->
+  <div id="hits" class="row justify-content-center"></div>
+
   <!-- card grid -->
-  <div class="row justify-content-center">
+  <div class="row justify-content-center my-4">
     <!-- single card loop -->
     <% @movies.each do |movie| %>
     <div class="col-6 col-sm-6 col-md-3 col-lg-2">
-      <div class="card-element rounded mb-4">
-        <%= link_to movie_path(movie) do %>
-        <%= cl_image_tag movie.photo.key, width: 200, height: 300, crop: :fill, class: 'card-thumb' %>
-        <% end %>
+      <div class="card-element mb-4">
+        <!-- play poster -->
+        <div class="card-play-wrap">
+          <% if movie.photo.attached? %>
+          <%= link_to movie.link, target: :_blank do %>
+          <%= cl_image_tag movie.photo.key, width: 200, height: 300, crop: :fill, class: 'card-thumb' %>
+          <div class="card-play"><i class="fas fa-play"></i></div>
+          <% end %>
+          <% end %>
+        </div>
+        <!-- end play poster -->
         <div class="card-info">
-          <h2 class="border-bottom mb-2 pb-2"><%= link_to movie.name, movie_path(movie) %></h2>
-          <p class="small text-dark"><%= movie.year %> | <%= movie.genre.name %> | <%= movie.duration %> min.</p>
+          <h2 class="border-bottom mb-2 pb-2 title"><%= link_to movie.name, movie_path(movie) %></h2>
+          <p class="small">Plataforma: <%= movie.platform %></p>
+          <p class="small"><%= movie.year %> | <%= movie.genre.name %> | <%= movie.duration %> min.</p>
+          <%= link_to 'Leia mais', movie_path(movie), class: 'text-uppercase badge badge-primary'%>
         </div>
       </div>
     </div>
@@ -26,40 +39,29 @@
     <!-- end single card loop -->
   </div>
   <!-- end card grid -->
-  <div id="hits" class="row justify-content-center"></div>
-  <!-- <div class="container">
-    <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-3" id="facets">
-        <div id="companies"></div>
-      </div>
-      <div class="col-sm-9" id="hits"></div>
-    </div>
-  </div> -->
+  <!-- start algolia script -->
   <script type="text/javascript">
     const hitTemplate = `
-      <div class="card-element rounded">
-      <img src="https://res.cloudinary.com/dl5oni5xk/image/upload/v1583600448/{{ photo.url }}.jpg">
+      <div class="card-element mb-4">
+        <!-- play poster -->
+        <div class="card-play-wrap">
+          <a href="{{link}}" alt="{{name}}" target="_blank">
+            <img src="{{photo.key}}" class="card-thumb">
+            <div class="card-play"><i class="fas fa-play"></i></div>
+          </a>
+        </div>
+        <!-- end play poster -->
         <div class="card-info">
-          <h2><a href="movies/{{id}}">{{name}}</a></h2>
-          <a href="#" class="badge badge-light text-uppercase">{{genre.name}}</a>
-          <div class="badge badge-light text-uppercase">{{year}}</div>
-          <div href="#" class="badge badge-light text-uppercase">{{duration}} min.</div>
+          <h2 class="border-bottom mb-2 pb-2 title">
+          <a href="movies/{{id}}" alt="{{name}}">{{name}}</a></h2>
+          <p class="small">Plataforma: {{platform}}</p>
+          <p class="small">{{year}} | {{genre.name}} | {{duration}} min.</p>
         </div>
       </div>`;
 
-    //     '<div class="hit-instant-search">' +
-    //   '<div class="name">{{{_highlightResult.name.value}}}</div>' +
-    //   '<div class="description">{{{_highlightResult.description.value}}}</div>'
-    // '</div>';
-
     const search = instantsearch({
-      appId: 'HG1OY9O7CS',
-      apiKey: 'f2e57f1cfe94fff29d052d6eeee0affc',
+      appId: '<%= ENV['ALGOLIASEARCH_APPLICATION_ID'] %>',
+      apiKey: '<%= ENV['ALGOLIASEARCH_API_KEY_SEARCH'] %>',
       indexName: '<%= Movie.index_name %>',
       urlSync: true
     });
@@ -86,22 +88,6 @@
         hitsPerPage: 10
       })
     );
-
-    // search.addWidget(
-    //   instantsearch.widgets.refinementList({
-    //     container: '#companies',
-    //     attributeName: 'company',
-    //     limit: 10,
-    //     templates: {
-    //       header: 'Companies'
-    //     },
-    //     cssClasses: {
-    //       root: 'list-group',
-    //       item: 'list-group-item',
-    //       count: 'badge pull-right'
-    //     }
-    //   })
-    // );
 
     search.start();
   </script>

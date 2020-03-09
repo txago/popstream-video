@@ -3,7 +3,7 @@
   <!-- page title -->
   <div class="row d-flex justify-content-center my-4">
     <div class="col-12 col-sm-12 col-md-10 col-lg-8 text-center">
-      <h1>Genres</h1>
+      <h1 class="title">Gêneros</h1>
     </div>
   </div>
   <!-- list container -->
@@ -12,8 +12,8 @@
       <ul class="list-group list-group-flush">
         <% @genres.each do |genre| %>
         <li class="list-group-item d-flex justify-content-between align-items-center rounded text-dark">
-          <%= genre.name %>
-          <span class="text-uppercase badge badge-primary"><%= genre.movies.length %> movies</span>
+          <span class="mr-auto p-2"><%= genre.name %></span>
+          <span class="p-2 text-uppercase badge badge-primary"><%= genre.movies.length %> filmes</span>
         </li>
         <% end %>
       </ul>

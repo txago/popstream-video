@@ -1,9 +1,9 @@
 <!-- page container -->
-<div class="container mb-4">
+<div class="container-fluid mb-4">
   <!-- page title -->
   <div class="row d-flex justify-content-center my-4">
     <div class="col-12 col-sm-12 col-md-10 col-lg-8 text-center">
-      <h1>Directors</h1>
+      <h1 class="title">Diretores</h1>
     </div>
   </div>
   <!-- card grid -->
@@ -16,19 +16,19 @@
         <%= cl_image_tag director.photo.key, width: 200, height: 200, crop: :fill, class: 'card-thumb' %>
         <% end %>
         <div class="card-info">
-          <h2><%= director.name %></h2>
+          <h2 class="title"><%= director.name %></h2>
         </div>
         <!-- director movies loop -->
         <% if director.movies.exists? %>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item font-weight-bold">Filmes</li>
+            <li class="list-group-item text-uppercase subtitle">Filmes</li>
             <% director.movies.each do |movie| %>
             <li class="list-group-item"><%= link_to movie.name, movie_path(movie) %></li>
             <% end %>
           </ul>
         <% else %>
           <div class="card-info">
-            <p>No movies yet.</p>
+            <p>Sem filmes ainda.</p>
           </div>
         <% end %>
         <!-- end director movies loop -->
