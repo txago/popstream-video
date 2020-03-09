@@ -1,12 +1,8 @@
 class GenresController < ApplicationController
-  before_action :set_genre, only: [:show, :destroy]
-  skip_before_action :authenticate_user!, only: [:index, :edit, :new, :create, :show, :destroy]
+  before_action :set_genre, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
-    @genres = Genre.all
-  end
-
-  def edit
     @genres = Genre.all
   end
 
@@ -21,15 +17,22 @@ class GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to edit_genres_path
+      redirect_to genres_path
     else
       render :new
     end
   end
 
+  def edit; end
+
+  def update
+    @genre.update(genre_params)
+    redirect_to genres_path
+  end
+
   def destroy
     @genre.destroy
-    redirect_to edit_genres_path
+    redirect_to genres_path
   end
 
   private

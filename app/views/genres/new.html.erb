@@ -9,11 +9,8 @@
   <!-- form container -->
   <div class="row justify-content-center">
     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-      <%= simple_form_for @genre do |f| %>
-      <%= f.input :name, label: 'Nome' %>
-      <%= f.button :submit, 'Adicionar', class: 'btn btn-lg btn-warning' %>
-      <% end %>
-      <%= link_to 'Voltar para lista de edição', edit_genres_path, class: 'my-4 btn btn-primary' %>
+      <%= render 'form', genre: @genre %>
+      <%= link_to 'Voltar para lista', genres_path, class: 'my-4 btn btn-primary' %>
     </div>
   </div>
   <!-- end form container -->

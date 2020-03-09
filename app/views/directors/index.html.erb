@@ -4,6 +4,7 @@
   <div class="row d-flex justify-content-center my-4">
     <div class="col-12 col-sm-12 col-md-10 col-lg-8 text-center">
       <h1 class="title">Diretores</h1>
+      <%= link_to "Adicine um novo diretor", new_director_path, class: "btn btn-primary my-2" %>
     </div>
   </div>
   <!-- card grid -->
@@ -17,6 +18,7 @@
         <% end %>
         <div class="card-info">
           <h2 class="title"><%= director.name %></h2>
+          <%= link_to 'Editar', edit_director_path(director), class: 'text-uppercase badge badge-warning'%>
         </div>
         <!-- director movies loop -->
         <% if director.movies.exists? %>

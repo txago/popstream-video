@@ -9,22 +9,8 @@
   <!-- form container -->
   <div class="row justify-content-center">
     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-      <%= simple_form_for @movie do |f| %>
-      <%= f.input :name, label: 'Nome' %>
-      <%= f.input :description, as: :text, label: 'Descrição' %>
-      <%= f.input :year, label: 'Ano' %>
-      <%= f.input :platform, label: 'Nome da plataforma de stream' %>
-      <%= f.input :link, label: 'Link para assistir na plataforma' %>
-      <%= f.input :trailer_url, label: 'Link do trailer' %>
-      <%= f.input :country, label: 'País' %>
-      <%= f.input :imdb_score, label: 'Nota iMDB (remover ponto, ex: 8.7 = 87)' %>
-      <%= f.input :duration, label: 'Duração (em minutos corridos, ex: 126)' %>
-      <%= f.association :director, label: 'Escolha diretor(a)' %>
-      <%= f.association :genre, label: 'Escolha gênero' %>
-      <%= f.file_field :photo, as: :file, label: 'Poster (min. 500x750px)' %>
-      <%= f.button :submit, 'Adicionar', class: 'btn btn-lg btn-warning' %>
-      <% end %>
-      <%= link_to 'Voltar para lista de edição', edit_movies_path, class: 'my-4 btn btn-primary' %>
+      <%= render 'form', movie: @movie %>
+      <%= link_to 'Voltar para lista', movies_path, class: 'my-4 btn btn-primary' %>
     </div>
   </div>
   <!-- end form container -->

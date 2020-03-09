@@ -1,12 +1,8 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :destroy]
-  skip_before_action :authenticate_user!, only: [:index, :edit, :new, :create, :show, :destroy]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
-    @movies = Movie.all
-  end
-
-  def edit
     @movies = Movie.all
   end
 
@@ -21,15 +17,22 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      redirect_to edit_movies_path
+      redirect_to movies_path
     else
       render :new
     end
   end
 
+  def edit; end
+
+  def update
+    @movie.update(movie_params)
+    redirect_to movies_path
+  end
+
   def destroy
     @movie.destroy
-    redirect_to edit_movies_path
+    redirect_to movies_path
   end
 
   private

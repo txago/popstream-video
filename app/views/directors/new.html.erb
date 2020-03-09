@@ -9,12 +9,8 @@
   <!-- form container -->
   <div class="row justify-content-center">
     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-      <%= simple_form_for @director do |f| %>
-      <%= f.input :name, label: 'Nome' %>
-      <%= f.input :photo, as: :file %>
-      <%= f.button :submit, 'Adicionar', class: 'btn btn-lg btn-warning' %>
-      <% end %>
-      <%= link_to 'Voltar para lista de edição', edit_directors_path, class: 'my-4 btn btn-primary' %>
+      <%= render 'form', director: @director %>
+      <%= link_to 'Voltar para lista', directors_path, class: 'my-4 btn btn-primary' %>
     </div>
   </div>
   <!-- end form container -->

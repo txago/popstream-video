@@ -4,6 +4,7 @@
   <div class="row d-flex justify-content-center my-4">
     <div class="col-12 col-sm-12 col-md-10 col-lg-8 text-center">
       <h1 class="title">Filmes</h1>
+      <%= link_to "Adicionar um novo filme", new_movie_path, class: "btn btn-primary my-2" %>
     </div>
   </div>
   <!-- card grid -->
@@ -27,6 +28,7 @@
           <p class="small">Plataforma: <%= movie.platform %></p>
           <p class="small"><%= movie.year %> | <%= movie.genre.name %> | <%= movie.duration %> min.</p>
           <%= link_to 'Leia mais', movie_path(movie), class: 'text-uppercase badge badge-primary'%>
+          <%= link_to 'Editar', edit_movie_path(movie), class: 'text-uppercase badge badge-light'%>
         </div>
       </div>
     </div>
