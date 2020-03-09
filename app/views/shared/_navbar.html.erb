@@ -1,13 +1,27 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <nav class="navbar d-flex">
 
+        <ul class="list-inline p-1">
+          <li class="list-inline-item">Melhores da Netflix</li>
+          <li class="list-inline-item">Os mais populares</li>
+          <li class="list-inline-item">Gêneros</li>
+          <li class="list-inline-item">Diretores</li>
+        </ul>
 
+        <ul class="list-inline ml-auto p-1">
+          <li class="list-inline-item"><%= link_to "Login", new_user_session_path %>
+          </li>
+          <li class="list-inline-item"><%= link_to "Cadastro", new_user_registration_path %>
+          </li>
+        </ul>
+
+      </nav>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
