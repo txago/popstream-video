@@ -1,1 +1,35 @@
-<p>sobre o filme</p>
+<!-- page container -->
+<div class="container mb-4">
+  <!-- page title -->
+  <div class="row my-4">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+      <%= image_tag @movie.image_url, class: "img-fluid" %>
+      <%= link_to "Assistir em #{@movie.platform} ", @movie.link, class: 'btn btn-lg btn-block btn-primary my-2', target: :_blank %>
+    <i class="fas fa-play"></i>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-6 col-lg-8">
+      <h1 class="title"><%= @movie.name %></h1>
+      <p class="small">Ano: <%= @movie.year %> | País: <%= @movie.country %> | Pontuação IMDb: <%= @movie.imdb_score %> | Duração: <%= @movie.duration %> min. | Gênero: <%= @movie.genre.name %></p>
+      <p class="lead"><%= @movie.description %></p>
+      <div class="row d-flex align-items-center my-4">
+        <div class="col-2 col-md-4 col-lg-2">
+          <%= cl_image_tag @movie.director.photo.key, width: 200, height: 200, crop: :fill, class: 'img-fluid rounded-circle' %>
+        </div>
+        <div class="col-10 col-md-8 col-lg-10">
+          <small>Dirigido por:</small>
+            <h4><%= @movie.director.name %></h4>
+        </div>
+      </div>
+<iframe id="player" src='https://www.youtube.com/embed/<%= @movie.trailer_url %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+  <!-- list container -->
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+      <p>teste</p>
+    <div class="col-6 col-sm-6 col-md-3 col-lg-2">
+  </div>
+  <!-- end list container -->
+</div>
+<!-- end container -->
