@@ -11,6 +11,9 @@
   <!-- algolia results div -->
   <div id="hits" class="row justify-content-center"></div>
 
+  <!-- algolia pagination -->
+  <div id="pagination" class="row col-12 justify-content-center"></div>
+
   <!-- start algolia script -->
   <script type="text/javascript">
     const hitTemplate = `
@@ -60,6 +63,16 @@
         hitsPerPage: 10
       })
     );
+
+    search.addWidget(
+      instantsearch.widgets.pagination({
+        container: "#pagination",
+          templates: {
+
+
+            },
+
+    }));
 
     search.start();
   </script>
