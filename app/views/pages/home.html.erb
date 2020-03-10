@@ -1,12 +1,16 @@
 <!-- page container -->
-<div class="container-fluid">
-  <!-- page header -->
-  <div class="row d-flex justify-content-center my-4">
-    <div class="col-12 col-sm-12 col-md-10 col-lg-8 text-center">
-      <h1 class="my-4 title">O que você quer assistir?</h1>
+  <div class="banner">
+  <div class="container-fluid">
+    <!-- page header -->
+      <div class="row d-flex justify-content-center my-4" style= background-image: url('<% image_url ""%>')>
+      <div class="col-12 col-sm-12 col-md-10 col-lg-8 text-center">
+        <%= image_tag "popcorn-logo.svg", class: "pb-5"  %>
+        <h1 class="my-4 title">O que você quer assistir?</h1>
       <input id="q" class="form-control form-control-lg my-4" value="" type="text">
+      </div>
     </div>
   </div>
+</div>
 
   <!-- algolia results div -->
   <div id="hits" class="row justify-content-center"></div>
