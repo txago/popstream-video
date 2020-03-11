@@ -9,8 +9,11 @@
       <%= link_to @movie.link, class: 'btn btn-lg btn-block btn-primary my-2', target: :_blank do %>
         Assistir em <%= @movie.platform %><i class="icon fas fa-play"></i>
       <% end %>
-       <%= link_to "Favoritar","javascript:;", id:"favoritar", class: 'btn btn-lg btn-block btn-primary my-2' if current_user %>
+      <!-- se o filme não foi favoritado -->
 
+      <!-- se o filme já foi favoritado -->
+      <%= link_to @user.favorited?(@movie) ? 'Favoritado' : 'Favoritar', set_favorite_movie_path(movie_id: @movie.id), remote: true, id: "favoritar#{@movie.id}", class: 'btn btn-lg btn-block btn-primary my-2' if current_user %>
+      <!-- botão que vai desfavoritar -->
 
     </div>
 
