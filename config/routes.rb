@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   # created to followers logic
   # alterado index para home
   # para teste pelo menos
-  resources :users, only: [:index] do
+  get 'users/:id', to: 'users#show'
+
+  resources :users, only: [:index, :show] do
     member do
       post :follow
       post :unfollow
