@@ -1,0 +1,9 @@
+const revertedText = {
+  "Favoritar": "Favoritado",
+  "Favoritado": "Favoritar"
+}
+const button = $("#favoritar<%= @movie.id %>")
+const buttonText = button.text()
+const updateText = revertedText[buttonText]
+
+button.text(updateText)

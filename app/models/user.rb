@@ -7,6 +7,11 @@ class User < ApplicationRecord
   has_many :favorite_genres, dependent: :destroy
   has_many :favorite_movies, dependent: :destroy
 
+  def favorited?(movie)
+    FavoriteMovie.find_by(user: self, movie: movie)
+  end
+
+
   #check if nickname is unique
   validates :nick, uniqueness: true, presence: true
 
@@ -32,4 +37,7 @@ class User < ApplicationRecord
   end
 
 
+
 end
+
+
