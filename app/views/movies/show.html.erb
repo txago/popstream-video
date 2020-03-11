@@ -1,3 +1,5 @@
+<%= hidden_field_tag "user_id", current_user.id if current_user %>
+<%= hidden_field_tag "movie_id", @movie.id %>
 <!-- page container -->
 <div class="container mb-4">
   <!-- page title -->
@@ -7,6 +9,8 @@
       <%= link_to @movie.link, class: 'btn btn-lg btn-block btn-primary my-2', target: :_blank do %>
         Assistir em <%= @movie.platform %><i class="icon fas fa-play"></i>
       <% end %>
+       <%= link_to "Favoritar","javascript:;", id:"favoritar", class: 'btn btn-lg btn-block btn-primary my-2' if current_user %>
+
 
     </div>
 

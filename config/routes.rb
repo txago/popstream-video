@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     resources :movies
   end
   resources :movies
+  get "set-favorite-movie", to: "favorites#set_favorite_movie"
 end
+
