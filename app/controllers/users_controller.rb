@@ -23,8 +23,11 @@ class UsersController < ApplicationController
     end
   end
 
+  #follow criadas contagem
   def show
     @user = User.find(params[:id])
+    @followers = @user.followers.count
+    @following = @user.following.count
   end
 
   private
