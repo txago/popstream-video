@@ -1,16 +1,11 @@
-  .banner {
-    background-image: url(banner-1.jpeg );
-    color: white;
-    padding: 120px 0;
-    background: linear-gradient(rgba(18, 33, 49, 0.8), rgba(18, 33, 49, 0.8)),
-    url('banner-1.jpeg');
-    background-size: cover;
-  }
-
 .navbar-lewagon {
   justify-content: space-between;
-  position: absolute;
+  background: transparent;
+  padding: 20px;
 
+  @media (min-width: 768px) {
+    padding: 20px 30px;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -18,49 +13,18 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
-
+  width: auto;
+  height: 30px;
 }
 
+.navbar-light .navbar-nav .nav-link {
+  color: $white;
 
-.navbar {
-
-
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 0.6rem;
-  font-size: 0.9rem;
-  background-color: transparent;
-
-
-a:hover {
-    color: #8840FF;
-    text-decoration: none;
-    background-color: transparent;
-    // font-size: 20px
+  &:hover {
+    color: $popcorn-yellow;
   }
-
 }
 
-.navbar-menu {
-  display: flex;
-  flex-direction: row;
-  width: 33%;
-  justify-content: center;
+.avatar {
+  background-color: $electric-blue;
 }
-
-
- a {
-    color: #8840FF;
-    text-decoration: none;
-    background-color: transparent;
-    font-size: 20px
-  }
-
-#hits {
-  margin-top: 65px;
-}
-
