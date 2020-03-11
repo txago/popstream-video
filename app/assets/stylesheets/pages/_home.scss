@@ -43,3 +43,50 @@ input[type="text"] {
   }
 }
 
+#pagination {
+  ul {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+    margin: 2rem 0;
+  }
+
+  li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+
+    &.ais-pagination--item__active {
+      a {
+        color: $white;
+        background: $electric-blue;
+      }
+    }
+
+    &:first-child {
+      a, span {
+        margin-left: 0;
+        border-top-left-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+      }
+    }
+
+    &:last-child {
+      a, span {
+        border-top-right-radius: .25rem;
+        border-bottom-right-radius: .25rem;
+      }
+    }
+
+    a, span {
+      position: relative;
+      display: block;
+      padding: .5rem .75rem;
+      margin-left: -1px;
+      line-height: 1.25;
+      color: $white;
+      background-color: transparent;
+      border: 1px solid $electric-blue;
+    }
+  }
+}
