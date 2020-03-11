@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :favorite_genres, dependent: :destroy
   has_many :favorite_movies, dependent: :destroy
 
+  #check if nickname is unique
+  validates :nick, uniqueness: true, presence: true
+
   #follow logic
   has_many :follower_relationships, foreign_key: :following_id, class_name: 'Follow'
   has_many :followers, through: :follower_relationships, source: :follower
