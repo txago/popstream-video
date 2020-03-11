@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :favorite_directors, dependent: :destroy
   has_many :favorite_genres, dependent: :destroy
   has_many :favorite_movies, dependent: :destroy
+  has_many :movies, through: :favorite_movies
 
   def favorited?(movie)
     FavoriteMovie.find_by(user: self, movie: movie)

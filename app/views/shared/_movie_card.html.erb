@@ -1,0 +1,17 @@
+<div class="card-element mb-4">
+  <!-- play poster -->
+  <div class="card-play-wrap">
+    <%= link_to movie.link, target: :_blank do %>
+      <%= image_tag movie.image_url, class: 'card-thumb' %>
+      <div class="card-play"><i class="fas fa-play"></i></div>
+    <% end %>
+  </div>
+  <!-- end play poster -->
+  <div class="card-info">
+    <h2 class="border-bottom mb-2 pb-2 title"><%= link_to movie.name, movie_path(movie) %></h2>
+    <p class="small">Plataforma: <%= movie.platform %></p>
+    <p class="small"><%= movie.year %> | <%= movie.genre.name %> | <%= movie.duration %> min.</p>
+    <%= link_to 'Leia mais', movie_path(movie), class: 'text-uppercase badge badge-primary'%>
+    <%= link_to 'Editar', edit_movie_path(movie), class: 'text-uppercase badge badge-light'%>
+  </div>
+</div>
