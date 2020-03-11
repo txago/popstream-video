@@ -1,6 +1,15 @@
+.banner {
+  background-image: url(banner-1.jpeg );
+  color: white;
+  padding: 120px 0;
+  background: linear-gradient(rgba(18, 33, 49, 0.8), rgba(18, 33, 49, 0.8)),
+  url('banner-1.jpeg');
+  background-size: cover;
+}
+
 .title {
-  font-size: 36px;
-  font-weight: $font-weight-bolder;
+  font-size: 48px;
+  font-weight: $font-weight-light;
   letter-spacing: -0.015em;
   color: $white;
 }
@@ -16,6 +25,9 @@ input[type="text"] {
 }
 
 #hits {
+  width: 100%;
+  margin: 0 auto;
+
   .ais-hits {
     width: 100%;
     display: flex;

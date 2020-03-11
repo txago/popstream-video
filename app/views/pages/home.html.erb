@@ -4,7 +4,7 @@
     <!-- page header -->
       <div class="row d-flex justify-content-center my-4" style= background-image: url('<% image_url ""%>')>
       <div class="col-12 col-sm-12 col-md-10 col-lg-8 text-center">
-        <%= image_tag "popcorn-logo.svg", class: "pb-5"  %>
+        <%= image_tag "popcorn-logo.svg", class: "mb-5"  %>
         <h1 class="my-4 title">O que você quer assistir?</h1>
       <input id="q" class="form-control form-control-lg my-4" value="" type="text">
       </div>
@@ -13,7 +13,7 @@
 </div>
 
   <!-- algolia results div -->
-  <div id="hits" class="row justify-content-center"></div>
+  <div id="hits" class="justify-content-center"></div>
 
   <!-- algolia pagination -->
   <div id="pagination" class="row col-12 justify-content-center"></div>
@@ -70,12 +70,7 @@
 
     search.addWidget(
       instantsearch.widgets.pagination({
-        container: "#pagination",
-          templates: {
-
-
-            },
-
+        container: "#pagination",templates: {}
     }));
 
     search.start();
