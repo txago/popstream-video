@@ -1,9 +1,11 @@
 const revertedText = {
-  "Favoritar": "Favoritado",
-  "Favoritado": "Favoritar"
+  "Favoritar": 'Favoritado <i class="fas fa-star" data-fav="Favoritado"></i>',
+  "Favoritado":'Favoritar <i class="far fa-star" data-fav="Favoritar"></i>'
 }
-const button = $("#favoritar<%= @movie.id %>")
-const buttonText = button.text()
+
+const button = document.querySelector("#favoritar<%= @movie.id %>");
+const icon = button.querySelector('i');
+const buttonText = icon.dataset.fav;
 const updateText = revertedText[buttonText]
 
-button.text(updateText)
+button.innerHTML = updateText;
