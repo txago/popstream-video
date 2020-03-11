@@ -30,6 +30,10 @@ class UsersController < ApplicationController
     @following = @user.following.count
   end
 
+  def profile
+    @user = current_user
+  end
+
   private
 
   def set_user

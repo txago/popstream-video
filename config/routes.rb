@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  get '/perfil', to: "users#profile"
   # created to followers logic
   # alterado index para home
   # para teste pelo menos

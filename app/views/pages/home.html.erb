@@ -1,23 +1,20 @@
 <!-- page container -->
-  <div class="banner">
-  <div class="container-fluid">
-    <!-- page header -->
-      <div class="row d-flex justify-content-center my-4" style= background-image: url('<% image_url ""%>')>
-      <div class="col-12 col-sm-12 col-md-10 col-lg-8 text-center">
-        <%= image_tag "popcorn-logo.svg", class: "mb-5"  %>
-        <h1 class="my-4 title">O que você quer assistir?</h1>
-      <input id="q" class="form-control form-control-lg my-4" value="" type="text">
-      </div>
+<div class="container-fluid">
+  <!-- background banner -->
+  <div class="row banner" style="background: linear-gradient(to bottom, rgba(19,27,35,0.8), rgba(19,27,35,1)), url('/assets/jeshoots-com-PpYOQgsZDM4-unsplash.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  </div>
+  <!-- page header -->
+  <div class="row d-flex justify-content-center search">
+    <div class="col-12 col-sm-12 col-md-10 col-lg-8 text-center">
+      <%= image_tag "popcorn-logo.svg", class: "mb-5" %>
+      <h1 class="my-4 title">O que você quer assistir?</h1>
+    <input id="q" class="form-control form-control-lg my-4" value="" type="text">
     </div>
   </div>
-</div>
-
   <!-- algolia results div -->
   <div id="hits" class="justify-content-center"></div>
-
   <!-- algolia pagination -->
   <div id="pagination" class="row col-12 justify-content-center"></div>
-
   <!-- start algolia script -->
   <script type="text/javascript">
     const hitTemplate = `
