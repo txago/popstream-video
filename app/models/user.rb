@@ -7,11 +7,11 @@ class User < ApplicationRecord
   has_many :favorite_genres, dependent: :destroy
   has_many :favorite_movies, dependent: :destroy
   has_many :movies, through: :favorite_movies
+  has_one_attached :photo
 
   def favorited?(movie)
     FavoriteMovie.find_by(user: self, movie: movie)
   end
-
 
   #check if nickname is unique
   validates :nick, uniqueness: true, presence: true
@@ -36,8 +36,6 @@ class User < ApplicationRecord
     relationship = Follow.find_by(follower_id: id, following_id: user_id)
     return true if relationship
   end
-
-
 
 end
 
