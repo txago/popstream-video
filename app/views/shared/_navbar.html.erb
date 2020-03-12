@@ -15,7 +15,10 @@
           </li>
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "Meus Favoritos", perfil_path, class: "nav-link" %>
+              <%= link_to "Usuários", users_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Meu Perfil", perfil_path, class: "nav-link" %>
             </li>
           <% end %>
         </ul>
@@ -50,14 +53,25 @@
               <%= link_to "Gêneros", genres_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Meus Favoritos", perfil_path, class: "nav-link" %>
+              <%= link_to "Usuários", users_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Meu Perfil", perfil_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
               <span class="nav-link">🍿</span>
             </li>
+          <% else %>
+            <li class="nav-item">
+              <span class="nav-link disabled">Olá, <span class="font-weight-bold"><%= current_user.nick %></span>!</span>
+            </li>
           <% end %>
           <li class="nav-item dropdown">
-            <%= image_tag "https://api.adorable.io/avatars/80/abott@adorable.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% if current_user.photo.attached? == true %>
+<%= cl_image_tag current_user.photo.key, height: 200, width: 200, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <%= image_tag "https://api.adorable.io/avatars/80/abott@adorable.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <%= link_to "Editar Meu perfil", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>

@@ -3,7 +3,7 @@
   <!-- page title -->
   <div class="row d-flex justify-content-center my-4">
     <div class="col-12 col-sm-12 col-md-10 col-lg-8 text-center">
-      <h1 class="title">Editar <%= resource_name.to_s.humanize %></h1>
+      <h1 class="title">Editar perfil de <%= current_user.nick %></h1>
     </div>
   </div>
   <!-- form container -->
@@ -12,19 +12,31 @@
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
-      <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :email, required: true, autofocus: true %>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <p>Aguardando confirmação de: <%= resource.unconfirmed_email %></p>
         <% end %>
+        <%= f.input :nick,
+                    label: "Nickname",
+                    required: false,
+                    autofocus: true %>
+        <%= f.input :photo,
+                    label: "Carregar foto",
+                    required: false,
+                    autofocus: true,
+                    as: :file %>
         <%= f.input :password,
-                    hint: "leave it blank if you don't want to change it",
+                    label: "Nova senha",
+                    hint: "Caso não queira mudar, é só deixar em branco.",
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
+                    label: "Confirme a nova senha",
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :current_password,
-                    hint: "we need your current password to confirm your changes",
+                    label: "Sua senha atual",
+                    hint: "Precisamos da sua senha atual para confirmar as mudanças.",
                     required: true,
                     input_html: { autocomplete: "current-password" } %>
       </div>
