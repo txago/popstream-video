@@ -1,9 +1,10 @@
 
 .card-element {
-  background-color: $white;
+  background-color: rgba(255,255,255,0.1);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   transition: all 0.2s ease-in-out;
   color: $black;
+  border-radius: 3px;
 
   &:hover {
     transform: scale(1.1);
@@ -11,16 +12,19 @@
 
   .card-play-wrap {
     position: relative;
+    min-height: 250px;
+    background-color: $dark;
 
     .card-thumb {
       width: 100%;
       height: auto;
+      border-radius: 3px 3px 0 0;
     }
 
     .card-play {
       transition: all 0.2s ease-in-out;
-      width: 25%;
-      height: 16.5%;
+      width: 50px;
+      height: 50px;
       position: absolute;
       bottom: 0;
       right: 0;
@@ -29,6 +33,7 @@
       justify-content: center;
       color: $popcorn-yellow;
       background-color: $electric-blue;
+      border-radius: 3px 0 0 0;
     }
 
     &:hover {
@@ -44,15 +49,27 @@
   .card-info {
     padding: 1rem;
     overflow: hidden;
+    color: $white;
 
     .title {
-      color: $black;
+      color: $white;
       font-size: 18px;
       font-weight: $font-weight-bold;
     }
 
+    a {
+      color: $white;
+    }
+
     p {
       margin-bottom: 0.5em;
+      line-height: 14px;
+
+      .small {
+        text-transform: uppercase;
+        color: #879098;
+        display: inline-block;
+      }
     }
   }
 }

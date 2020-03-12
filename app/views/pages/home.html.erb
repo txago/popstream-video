@@ -12,7 +12,13 @@
     </div>
   </div>
   <!-- algolia results div -->
-  <div id="hits" class="justify-content-center"></div>
+  <div id="hits" class="justify-content-center">
+    <div class="d-flex justify-content-center text-warning">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
   <!-- algolia pagination -->
   <div id="pagination" class="d-flex justify-content-center"></div>
   <!-- start algolia script -->
@@ -28,12 +34,11 @@
         </div>
         <!-- end play poster -->
         <div class="card-info">
-          <h2 class="border-bottom mb-2 pb-2 title">
-          <a href="movies/{{id}}" alt="{{name}}">{{name}}</a></h2>
-          <p class="small">Plataforma: {{platform}}</p>
-          <p class="small">{{year}} | {{genre.name}} | {{duration}} min.</p>
+          <h2 class="mb-2 pb-2 title"><a href="movies/{{id}}" alt="{{name}}">{{name}}</a></h2>
+          <p><span class="small mr-2 text-white">{{platform}}</span><span class="small mr-2">{{year}}</span><span class="small mr-2">{{genre.name}}</span><span class="small">{{duration}} min.</span></p>
         </div>
       </div>`;
+    const loadingContainer = document.querySelector('#loading');
 
     const search = instantsearch({
       appId: '<%= ENV['ALGOLIASEARCH_APPLICATION_ID'] %>',
@@ -48,7 +53,6 @@
         placeholder: 'Digite um tema, assunto, gênero, nome, diretor, país...',
         autofocus: true,
         poweredBy: false,
-        showLoadingIndicator: true,
       })
     );
 
