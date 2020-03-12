@@ -1,10 +1,18 @@
-<h1>meus favoritos filmes</h1>
-<div class="row justify-content-center">
-  <!-- single card loop -->
-  <% @user.movies.each do |movie| %>
-  <div class="col-6 col-sm-6 col-md-3 col-lg-2">
-    <%= render 'shared/movie_card', movie: movie, favorite: '<i class="fas fa-star"></i>', favorited: '<i class="far fa-star"></i>' %>
-  </div>
-  <% end %>
-  <!-- end single card loop -->
+<div class="container">
+    <h1>Meu Perfil</h1>
+    <br>
+    <h2><%= @user.nick %> </h2>
+    <p> Seguidores: <%= @user.followers.count %></p>
+    <p> Seguindo: <%= @user.following.count %> </p>
+
+    <!-- single card loop -->
+
+      <% @user.movies.each do |movie| %>
+      <div class="col-6 col-sm-6 col-md-3 col-lg-2">
+        <%= render 'shared/movie_card', movie: movie, favorite: '<i class="fas fa-star"></i>', favorited: '<i class="far fa-star"></i>' %>
+      </div>
+      <% end %>
+
+
+    <!-- end single card loop -->
 </div>
