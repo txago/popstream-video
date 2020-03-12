@@ -10,7 +10,7 @@
   <div class="card-info">
     <h2 class="mb-2 pb-2 title"><%= link_to movie.name, movie_path(movie) %></h2>
     <p><span class="small mr-2 text-white"><%= movie.platform %></span><span class="small mr-2"><%= movie.year %></span><span class="small mr-2"><%= movie.genre.name %></span><span class="small"><%= movie.duration %> min.</span></p>
-    <%= link_to current_user.favorited?(movie) ? '<i class="fas fa-star" data-fav="Favoritado"></i>'.html_safe : '<i class="far fa-star " data-fav="Favoritar"></i>'.html_safe, set_favorite_movie_path(movie_id: movie.id), remote: true, id: "favoritar#{movie.id}" if user_signed_in? %>
+    <%= link_to current_user.favorited?(movie) ? "<i class='fas fa-star' data-fav='#{favorite}'></i>".html_safe : "<i class='far fa-star' data-fav='#{favorited}'></i>".html_safe, set_favorite_movie_path(movie_id: movie.id), remote: true, id: "favoritar#{movie.id}" if user_signed_in? %>
     <%= link_to 'Leia mais', movie_path(movie), class: 'text-uppercase badge badge-primary'%>
     <%= link_to 'Editar', edit_movie_path(movie), class: 'text-uppercase badge badge-dark'%>
   </div>
