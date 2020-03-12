@@ -2,17 +2,16 @@
     <h1>Meu Perfil</h1>
     <br>
     <h2><%= @user.nick %> </h2>
-    <p> Seguidores: <%= @user.followers.count %></p>
-    <p> Seguindo: <%= @user.following.count %> </p>
+    <span> Seguidores: <%= @user.followers.count %></span>
+    <span> Seguindo: <%= @user.following.count %> </span>
 
     <!-- single card loop -->
-
-      <% @user.movies.each do |movie| %>
-      <div class="col-6 col-sm-6 col-md-3 col-lg-2">
-        <%= render 'shared/movie_card', movie: movie, favorite: '<i class="fas fa-star"></i>', favorited: '<i class="far fa-star"></i>' %>
+      <div class="row mt-4">
+        <% @user.movies.each do |movie| %>
+        <div class="col-6 col-sm-6 col-md-3 col-lg-2">
+          <%= render 'shared/movie_card', movie: movie, favorite: '<i class="fas fa-star"></i>', favorited: '<i class="far fa-star"></i>' %>
+        </div>
+        <% end %>
       </div>
-      <% end %>
-
-
     <!-- end single card loop -->
 </div>
