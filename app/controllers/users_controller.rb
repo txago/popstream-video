@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   #follow criadas contagem
   def show
     @user = User.find(params[:id])
+    redirect_to perfil_path if current_user == @user
   end
 
   def profile

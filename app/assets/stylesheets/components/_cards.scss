@@ -1,3 +1,6 @@
+.movie-data {
+  line-height: 16px;
+}
 
 .card-element {
   background-color: rgba(255,255,255,0.1);
@@ -109,6 +112,11 @@
 
     a {
       color: $white;
+    }
+
+    .star-link:hover {
+      color: $popcorn-yellow;
+      text-decoration: none;
     }
 
     p {

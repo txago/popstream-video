@@ -1,7 +1,10 @@
 <!-- page container -->
 <div class="container-fluid">
   <!-- background banner -->
-  <div class="row banner" style="background: linear-gradient(to bottom, rgba(19,27,35,0.8), rgba(19,27,35,1)), url('/assets/jeshoots-com-PpYOQgsZDM4-unsplash.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+
+  <div class="row banner" style="background: linear-gradient(to bottom, rgba(19,27,35,0.8), rgba(19,27,35,1)), url('<%= image_url "jeshoots-com-PpYOQgsZDM4-unsplash.jpg" %>'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+
+
   </div>
   <!-- page header -->
   <div class="row d-flex justify-content-center search">
@@ -34,8 +37,8 @@
         </div>
         <!-- end play poster -->
         <div class="card-info">
-          <h2 class="mb-2 pb-2 title"><a href="movies/{{id}}" alt="{{name}}">{{name}}</a></h2>
-          <p><span class="small mr-2 text-white">{{platform}}</span><span class="small mr-2">{{year}}</span><span class="small mr-2">{{genre.name}}</span><span class="small">{{duration}} min.</span></p>
+          <h2 class="mb-2 title"><a href="movies/{{id}}" alt="{{name}}">{{name}}</a></h2>
+          <div class="movie-data"><span class="small mr-2 text-white">{{platform}}</span><span class="small mr-2">{{year}}</span><span class="small mr-2">{{genre.name}}</span><span class="small">{{duration}} min.</span></div>
         </div>
       </div>`;
     const loadingContainer = document.querySelector('#loading');
