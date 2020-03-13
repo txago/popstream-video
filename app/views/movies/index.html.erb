@@ -12,7 +12,9 @@
     <!-- single card loop -->
     <% @movies.each do |movie| %>
       <div class="col-6 col-sm-6 col-md-3 col-lg-2">
+        <%= render 'shared/movie_card', movie: movie, favorite: '<i class="fas fa-star" /i>', favorited: '<i class="far fa-star" /i>' %>
         <%= render 'shared/movie_card', movie: movie, favorite: '<i class="fas fa-star icon" /i>', favorited: '<i class="far fa-star icon" /i>' %>
+
       </div>
     <% end %>
     <!-- end single card loop -->
