@@ -2,36 +2,56 @@
 <%= hidden_field_tag "movie_id", @movie.id %>
 <!-- page container -->
 <div class="container mb-4">
-  <!-- page title -->
-  <div class="row my-4">
-    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+  <!-- movie content -->
+  <div class="row d-flex justify-content-center my-4">
+    <div class="col-12 col-sm-12 col-md-5 col-lg-2 col-lg-4">
       <%= image_tag @movie.image_url, class: "img-fluid" %>
-      <%= link_to @movie.link, class: 'btn btn-lg btn-block btn-primary my-2', target: :_blank do %>
+      <%= link_to @movie.link, class: 'btn btn-lg btn-block btn-warning my-2', target: :_blank do %>
         Assistir em <%= @movie.platform %><i class="icon fas fa-play"></i>
       <% end %>
-      <!-- se o filme não foi favoritado -->
-
-      <!-- se o filme já foi favoritado -->
-      <%= link_to @user.favorited?(@movie) ? 'Favoritado <i class="fas fa-star" data-fav="Favoritado"></i>'.html_safe : 'Favoritar <i class="far fa-star " data-fav="Favoritar"></i>'.html_safe, set_favorite_movie_path(movie_id: @movie.id), remote: true, id: "favoritar#{@movie.id}", class: 'btn btn-lg btn-block btn-primary my-2' if current_user %>
-      <!-- botão que vai desfavoritar -->
-    <div data-banana="hello"></div>
+      <!-- favorite button -->
+      <%= link_to @user.favorited?(@movie) ? 'Favoritado<i class="fas fa-star icon" data-fav="Favoritado"></i>'.html_safe : 'Favoritar<i class="far fa-star icon" data-fav="Favoritar"></i>'.html_safe, set_favorite_movie_path(movie_id: @movie.id), remote: true, id: "favoritar#{@movie.id}", class: 'btn btn-lg btn-block btn-primary mt-2 mb-4 ' if current_user %>
     </div>
-
-    <div class="col-12 col-sm-12 col-md-6 col-lg-8">
+    <!-- movie info -->
+    <div class="col-12 col-sm-12 col-md-7 col-lg-4 col-lg-6">
       <h1 class="title"><%= @movie.name %></h1>
-      <p class="small">Ano: <%= @movie.year %> | País: <%= @movie.country %> | Pontuação IMDb: <%= @movie.imdb_score/10.to_f %> | Duração: <%= @movie.duration %> min. | Gênero: <%= @movie.genre.name %></p>
-      <p class="lead"><%= @movie.description %></p>
-      <div class="row d-flex align-items-center my-4">
-        <div class="col-2 col-md-4 col-lg-2">
-          <%= cl_image_tag @movie.director.photo.key, width: 200, height: 200, crop: :fill, class: 'img-fluid rounded-circle' %>
-        </div>
-        <div class="col-10 col-md-8 col-lg-10">
-          <small>Dirigido por:</small>
-            <h4><%= @movie.director.name %></h4>
+      <div class="row d-flex align-items-center mt-2 mb-4">
+        <div class="movie-data col-12">
+          <span class="small mr-1"><%= image_tag 'MV5BMTk3ODA4Mjc0NF5BMl5BcG5nXkFtZTgwNDc1MzQ2OTE@._V1_.png', class: 'imdb-img' %></span>
+          <span class="small mr-3 text-white"><%= @movie.imdb_score/10.to_f %> / 10</span>
+          <span class="small mr-1">País</span>
+          <span class="small mr-3 text-white"><%= @movie.country %></span>
+          <span class="small mr-1">Ano</span>
+          <span class="small mr-3 text-white"><%= @movie.year %></span>
+          <span class="small mr-1">Duração</span>
+          <span class="small mr-3 text-white"><%= @movie.duration %> min.</span>
+          <span class="small mr-1">Gênero</span>
+          <span class="small mr-3 text-white"><%= @movie.genre.name %></span>
         </div>
       </div>
-        <iframe id="player" src='https://www.youtube.com/embed/<%= @movie.trailer_url.split(/v=(\w*)&?/)[1] %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <h2 class="movie-section">Sinopse</h2>
+      <p><%= @movie.description %></p>
+      <h2 class="movie-section">Trailer</h2>
+      <div class="video-wrapper mb-4">
+        <iframe src='https://www.youtube.com/embed/<%= @movie.trailer_url.split(/v=(\w*)&?/)[1] %>' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
+      <h2 class="movie-section">Direção</h2>
+      <div class="bg-light rounded">
+        <%= link_to directors_path do %>
+        <div class="row d-flex align-items-center my-4">
+          <div class="col-4 col-md-4 col-lg-3 col-xl-3">
+            <%= cl_image_tag @movie.director.photo.key, width: 200, height: 200, crop: :fill, class: 'img-fluid rounded-left' %>
+          </div>
+          <div class="col-8 col-md-8 col-lg-9 col-xl-9 text-left">
+            <h3 class="movie-heading"><%= @movie.director.name %></h3>
+            <p class="small">Veja mais filmes deste e outros diretores <i class="fas fa-chevron-right ml-1"></i></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
- </div>
+</div>
 <!-- end container -->
+
+
