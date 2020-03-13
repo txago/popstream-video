@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   #follow actions
   def follow(user_id)
-    following_relationships.create(following_id: user_id)
+    following_relationships.where(following_id: user_id).first_or_create
   end
 
   def unfollow(user_id)
@@ -36,7 +36,6 @@ class User < ApplicationRecord
     relationship = Follow.find_by(follower_id: id, following_id: user_id)
     return true if relationship
   end
-
 end
 
 

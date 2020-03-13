@@ -1,3 +1,7 @@
 <div class="container">
-  <%= render @users %>
+  <ul>
+    <% @users.each do |user| %>
+      <%= render 'user', user: user %>
+    <% end %>
+  </ul>
 </div>

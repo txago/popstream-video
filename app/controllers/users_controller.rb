@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if current_user.follow(@user.id)
       respond_to do |format|
         format.html { redirect_to root_path }
-        format.js
+        format.js { render action: :follow }
       end
     end
   end

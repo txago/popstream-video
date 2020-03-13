@@ -2,5 +2,6 @@ function renderUser(userHTML) {
   const user = document.querySelector("[data-user='<%= @user.id %>']");
   user.outerHTML = userHTML;
 }
-
+const html = '<%= j render @user %>'
+debugger
 renderUser('<%= j render @user %>');

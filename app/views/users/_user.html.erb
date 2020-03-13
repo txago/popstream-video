@@ -1,11 +1,9 @@
-<!-- app/views/users/_user.html.erb -->
-
-<div class="row align-items-center mb-3">
+<div class="row align-items-center mb-3" data-user=<%= user.id %>>
   <div class="col-sm-2">
     <% if user.photo.attached? == true %>
       <%= cl_image_tag user.photo.key, height: 200, width: 200, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <% else %>
-          <%= image_tag "https://api.adorable.io/avatars/80/abott@adorable.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <% else %>
+      <%= image_tag "https://api.adorable.io/avatars/80/abott@adorable.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     <% end %>
   </div>
 
@@ -21,7 +19,7 @@
       <div class="col">
         <span class="count"><%= user.following.count %></span><br> <span class="seg">Seguindo</span>
       </div>
-      <% if user.is_following?(user.id) %>
+      <% if current_user.is_following?(user.id) %>
         <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true, :class => "btn btn-secondary w-100" %>
       <% else %>
         <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true, :class => "btn btn-primary w-100" %>
@@ -31,20 +29,7 @@
 
   <div class="col-sm-2 img_container">
     <div class="popup" onclick="myFunction('<%= user.id %>')"><i class="fas fa-heart"></i>
-     <span class="popuptext" id="myPopup_<%= user.id %>">
-      <% user.favorite_movies.all.each do | m | %>
-        <% m %>
-      <% end %>
-      </span>
+     <span class="popuptext" id="myPopup_<%= user.id %>"><%= user.email%></span>
     </div>
   </div>
-
 </div>
-<hr>
-
-
-
-
-
-
-
