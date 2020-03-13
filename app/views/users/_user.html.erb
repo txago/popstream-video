@@ -1,43 +1,49 @@
 <!-- app/views/users/_user.html.erb -->
-  <div class="container">
-      <div class="row">
-        <div class="col-sm-2">
-          <%= cl_image_tag(user.photo, height: 80, width: 128, crop: :fill) %>
-        </div>
-        <div class="col-sm-3">
-          <h4>@<%= user.nick %> </h4>
-        </div>
 
-      <div class="col-sm-3">
-        <div class="row">
-          <div class="col">
-            <a><%= user.followers.count %></a><br class="seg">Seguidores</br>
-          </div>
-          <div class="col">
-            <a><%= user.following.count %></a><br class="seg">Seguindo</br>
-            </div>
-                <% if current_user.is_following?(user.id) %>
-                  <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true, :class => "btn btn-secondary w-100" %>
-                <% else %>
-                <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true, :class => "btn btn-primary w-100" %>
-                <% end %>
-            </div>
-          </div>
-      <div class="col-sm-2 img_container">
-        <div class="popup" onclick="myFunction()"><i class="fas fa-heart"></i>
-         <span class="popuptext" id="myPopup"><%= user.email%></span>
-        </div>
-      </div>
-     </div>
+<div class="row align-items-center mb-3">
+  <div class="col-sm-2">
+    <% if user.photo.attached? == true %>
+      <%= cl_image_tag user.photo.key, height: 200, width: 200, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% else %>
+          <%= image_tag "https://api.adorable.io/avatars/80/abott@adorable.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <% end %>
   </div>
 
-  <script>
-      // When the user clicks on <div>, open the popup
-      function myFunction() {
-        var popup = document.getElementById("myPopup");
-        popup.classList.toggle("show");
-      }
-  </script>
+  <div class="col-sm-5">
+    <h4>@<%= user.nick %> </h4>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="row">
+      <div class="col">
+        <span class="count align-items-center mb-1"><%= user.followers.count %></span><br> <span class="seg">Seguidores</span>
+      </div>
+      <div class="col">
+        <span class="count"><%= user.following.count %></span><br> <span class="seg">Seguindo</span>
+      </div>
+      <% if user.is_following?(user.id) %>
+        <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true, :class => "btn btn-secondary w-100" %>
+      <% else %>
+        <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true, :class => "btn btn-primary w-100" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-sm-2 img_container">
+    <div class="popup" onclick="myFunction('<%= user.id %>')"><i class="fas fa-heart"></i>
+     <span class="popuptext" id="myPopup_<%= user.id %>">
+      <% user.favorite_movies.all.each do | m | %>
+        <% m %>
+      <% end %>
+      </span>
+    </div>
+  </div>
+
+</div>
+<hr>
+
+
+
 
 
 
