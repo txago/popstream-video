@@ -1,18 +1,28 @@
-
 <div class="container">
-    <h1>Meu Perfil</h1>
-    <br>
-    <h2><%= @user.nick %> </h2>
-    <span> Seguidores: <%= @user.followers.count %></span>
-    <span> Seguindo: <%= @user.following.count %> </span>
+  <div class="profile">
+    <div class="d-flex align-items-center">
+      <% if current_user.photo.attached? == true %>
+        <%= cl_image_tag current_user.photo.key, height: 300, width: 300, crop: :fill, class: "avatar-profile" %>
+      <% else %>
+        <%= image_tag "https://api.adorable.io/avatars/80/abott@adorable.png", class: "avatar-profile" %>
+      <% end %>
+      <h2><%= @user.nick %> </h2>
+    </div>
+    <div>
+      <span> Seguidores: <%= @user.followers.count %></span>
+      <span> Seguindo: <%= @user.following.count %> </span>
+    </div>
+  </div>
 
+  <div class="movies">
     <!-- single card loop -->
       <div class="row mt-5">
         <% @user.movies.each do |movie| %>
-        <div class="col-6 col-sm-6 col-md-3 col-lg-2">
+        <div class="col-6 col-sm-6 col-md-3 col-lg-3">
           <%= render 'shared/movie_card', movie: movie, favorite: '<i class="fas fa-star"></i>', favorited: '<i class="far fa-star"></i>' %>
         </div>
         <% end %>
       </div>
     <!-- end single card loop -->
+  </div>
 </div>
