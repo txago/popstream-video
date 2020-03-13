@@ -1,5 +1,5 @@
 h4 {
-  color: yellow;
+  color: #FFF900;
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   font-style:bold;
@@ -11,10 +11,24 @@ a {
   vertical-align: middle;
 }
 
-.seg {
-  color: black;
-  font-size: 8px;
+hr {
+  color: white;
 }
+
+.seg {
+  color: #4f4f4f;
+  font-size: 12px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.count {
+  color: gray;
+  text-align: center;
+  font-size: 16px;
+  font-style: bold;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
 
 .fa-heart {
   color: red;

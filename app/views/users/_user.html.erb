@@ -16,10 +16,10 @@
   <div class="col-sm-3">
     <div class="row">
       <div class="col">
-        <a><%= user.followers.count %></a><br> <span class="seg">Seguidores</span>
+        <span class="count align-items-center mb-1"><%= user.followers.count %></span><br> <span class="seg">Seguidores</span>
       </div>
       <div class="col">
-        <a><%= user.following.count %></a><br> <span class="seg">Seguindo</span>
+        <span class="count"><%= user.following.count %></span><br> <span class="seg">Seguindo</span>
       </div>
       <% if user.is_following?(user.id) %>
         <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true, :class => "btn btn-secondary w-100" %>
@@ -31,7 +31,11 @@
 
   <div class="col-sm-2 img_container">
     <div class="popup" onclick="myFunction('<%= user.id %>')"><i class="fas fa-heart"></i>
-     <span class="popuptext" id="myPopup_<%= user.id %>"><%= user.email%></span>
+     <span class="popuptext" id="myPopup_<%= user.id %>">
+      <% user.favorite_movies.all.each do | m | %>
+        <% m %>
+      <% end %>
+      </span>
     </div>
   </div>
 
