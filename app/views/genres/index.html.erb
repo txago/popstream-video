@@ -1,26 +1,46 @@
 <!-- page container -->
-<div class="container mb-4">
+<div class="container-fluid mb-4">
   <!-- page title -->
   <div class="row d-flex justify-content-center my-4">
     <div class="col-12 col-sm-12 col-md-10 col-lg-8 text-center">
       <h1 class="title">Gêneros</h1>
-      <%= link_to "Adicionar um novo gênero", new_genre_path, class: "btn btn-primary my-2" %>
     </div>
   </div>
-  <!-- list container -->
+  <!-- card grid -->
   <div class="row justify-content-center">
-    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-      <ul class="list-group list-group-flush">
-        <% @genres.each do |genre| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center rounded text-dark">
-          <span class="mr-auto p-2"><%= genre.name %></span>
-          <span class="p-2 text-uppercase badge badge-primary"><%= genre.movies.length %> filmes</span>
-          <%= link_to 'Editar', edit_genre_path(genre), class: 'text-uppercase badge badge-light'%>
-        </li>
-        <% end %>
-      </ul>
+    <!-- single card loop -->
+    <% @genres.each do |genre| %>
     <div class="col-6 col-sm-6 col-md-3 col-lg-2">
+      <div class="card-director mb-4">
+        <div class="card-info">
+          <h2 class="title"><%= genre.name %></h2>
+        </div>
+        <!-- director movies loop -->
+        <% if genre.movies.length > 1 %>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-uppercase subtitle"><%= genre.movies.length %> filmes</li>
+            <% genre.movies.each do |movie| %>
+            <li class="list-group-item"><%= link_to movie.name, movie_path(movie) %></li>
+            <% end %>
+          </ul>
+        <% elsif genre.movies.length == 1 %>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-uppercase subtitle"><%= genre.movies.length %> filme</li>
+            <% genre.movies.each do |movie| %>
+            <li class="list-group-item"><%= link_to movie.name, movie_path(movie) %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <div class="card-info">
+            <p>Sem filmes ainda.</p>
+          </div>
+        <% end %>
+        <!-- end director movies loop -->
+      </div>
+    </div>
+    <% end %>
+    <!-- end single card loop -->
   </div>
-  <!-- end list container -->
+  <!-- end card grid -->
 </div>
 <!-- end container -->

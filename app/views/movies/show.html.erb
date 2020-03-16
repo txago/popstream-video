@@ -37,21 +37,41 @@
       </div>
       <h2 class="movie-section">Direção</h2>
       <div class="bg-light rounded">
-        <%= link_to directors_path do %>
         <div class="row d-flex align-items-center my-4">
           <div class="col-4 col-md-4 col-lg-3 col-xl-3">
             <%= cl_image_tag @movie.director.photo.key, width: 200, height: 200, crop: :fill, class: 'img-fluid rounded-left' %>
           </div>
-          <div class="col-8 col-md-8 col-lg-9 col-xl-9 text-left">
-            <h3 class="movie-heading"><%= @movie.director.name %></h3>
-            <p class="small">Veja mais filmes deste e outros diretores <i class="fas fa-chevron-right ml-1"></i></p>
+          <div class="col-8 col-md-8 col-lg-9 col-xl-9">
+            <div class="row">
+              <%= link_to directors_path do %>
+                <h3 class="movie-heading text-left"><%= @movie.director.name %></h3>
+                <p class="small">Veja mais filmes deste e outros diretores <i class="fas fa-chevron-right ml-1"></i></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% if @genre.length.positive? %>
+      <h2 class="movie-section">Mais filmes de <%= @movie.genre.name %></h2>
+      <div class="row my-4">
+        <% @genre.first(6).each do |movie| %>
+        <div class="col-6 col-sm-6 col-md-3   col-lg-4">
+          <div class="card-element mb-4">
+            <div class="card-play-wrap">
+              <%= link_to movie_path(movie) do %>
+              <%= image_tag movie.image_url, class: "img-fluid" %>
+              <% end %>
+            </div>
+            <div class="card-info">
+              <h2 class="mb-2 title"><%= link_to movie.name, movie_path(movie) %></h2>
+              <div class="movie-data"><span class="small mr-2 text-white"><%= movie.platform %></span><span class="small mr-2"><%= movie.year %></span><span class="small"><%= movie.duration %> min.</span></div>
+            </div>
           </div>
         </div>
         <% end %>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
 <!-- end container -->
-
-

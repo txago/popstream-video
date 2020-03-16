@@ -8,12 +8,22 @@
   font-weight: 300;
 }
 
-.movie-heading {
-  font-size: 24px;
-  line-height: 30px;
-  font-weight: 300;
-  color: $black;
-  margin: 0;
+a {
+  .movie-heading {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 300;
+    color: $black;
+    margin: 0;
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    h3 {
+      color: $electric-blue;
+    }
+  }
 }
 
 .small {

@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
   def show
     @user = current_user
     @movie = Movie.find(params[:id])
+    @genre = Movie.where('genre_id = ?', @movie.genre_id).where.not(id: @movie.id)
   end
 
   def new
