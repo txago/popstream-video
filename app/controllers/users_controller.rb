@@ -5,6 +5,12 @@ class UsersController < ApplicationController
     @users = User.where.not(id: current_user.id)
   end
 
+  #follow criadas contagem
+  def show
+    @user = User.find(params[:id])
+    redirect_to perfil_path if current_user == @user
+  end
+
   def follow
     if current_user.follow(@user.id)
       respond_to do |format|
@@ -21,12 +27,6 @@ class UsersController < ApplicationController
         format.js { render action: :follow }
       end
     end
-  end
-
-  #follow criadas contagem
-  def show
-    @user = User.find(params[:id])
-    redirect_to perfil_path if current_user == @user
   end
 
   def profile
