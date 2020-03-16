@@ -1,4 +1,4 @@
-<div class="row align-items-center mb-3" data-user=<%= user.id %>>
+009<div class="row align-items-center mb-3" data-user=<%= user.id %>>
   <div class="col-sm-2">
     <% if user.photo.attached? == true %>
       <%= cl_image_tag user.photo.key, height: 200, width: 200, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -14,13 +14,13 @@
   <div class="col-sm-3">
     <div class="row">
       <div class="col">
-        <span class="count align-items-center mb-1"><%= user.followers.count %></span><br> <span class="seg">Seguidores</span>
+        <span class="count align-items-center mb-1 text-light"><%= user.followers.count %></span><br> <span class="seg text-warning">Seguidores</span>
       </div>
       <div class="col">
-        <span class="count"><%= user.following.count %></span><br> <span class="seg">Seguindo</span>
+        <span class="count text-light"><%= user.following.count %></span><br> <span class="seg text-warning">Seguindo</span>
       </div>
       <% if current_user.is_following?(user.id) %>
-        <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true, :class => "btn btn-secondary w-100" %>
+        <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true, :class => "btn btn-primary w-100" %>
       <% else %>
         <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true, :class => "btn btn-primary w-100" %>
       <% end %>
