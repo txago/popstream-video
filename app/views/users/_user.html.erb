@@ -1,35 +1,25 @@
-<div class="row align-items-center mb-3" data-user=<%= user.id %>>
-  <div class="col-sm-2">
+<div class="col-6 col-sm-4 col-md-4 col-lg-3 text-center" data-user=<%= user.id %>>
+  <%= link_to user_path(user) do %>
     <% if user.photo.attached? == true %>
-      <%= cl_image_tag user.photo.key, height: 200, width: 200, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <%= cl_image_tag user.photo.key, height: 400, width: 400, crop: :fill, class: "avatar-profile mb-3" %>
     <% else %>
-      <%= image_tag "https://api.adorable.io/avatars/80/abott@adorable.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <%= image_tag "blank-profile-picture-973460_1280.jpg", class: "avatar-profile mb-3" %>
     <% end %>
-  </div>
-
-  <div class="col-sm-5">
-    <h4><%= link_to user.nick, user_path(user), class: '' %></h4>
-  </div>
-
-  <div class="col-sm-3">
-    <div class="row">
-      <div class="col">
-        <span class="count align-items-center mb-1 text-light"><%= user.followers.count %></span><br> <span class="seg text-warning">Seguidores</span>
-      </div>
-      <div class="col">
-        <span class="count text-light"><%= user.following.count %></span><br> <span class="seg text-warning">Seguindo</span>
-      </div>
+    <h2 class="title mb-2"><%= user.nick %></h2>
+    <div class="row d-flex justify-content-center mb-2">
       <% if current_user.is_following?(user.id) %>
-        <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true, :class => "btn btn-primary w-100" %>
+        <%= link_to unfollow_user_path(user.id), method: :post, remote: true, :class => "btn btn-primary btn-sm my-2" do %>
+        Deixar de seguir <i class="fas fa-user-times mx-1"></i>
+        <% end %>
       <% else %>
-        <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true, :class => "btn btn-primary w-100" %>
+        <%= link_to follow_user_path(user.id), method: :post, remote: true, :class => "btn btn-warning btn-sm my-2" do %>
+        Seguir <i class="fas fa-user-check mx-1"></i>
+        <% end %>
       <% end %>
     </div>
-  </div>
-
-  <div class="col-sm-2 img_container">
-    <div class="popup" onclick="myFunction('<%= user.id %>')"><i class="fas fa-heart"></i>
-     <span class="popuptext" id="myPopup_<%= user.id %>"><%= user.email%></span>
+    <div class="row d-flex justify-content-center mb-4">
+      <p class="small mr-1">Seguidores <span class="badge badge-pill badge-dark ml-1"><%= user.followers.count %></span></p>
+      <p class="small mr-1">Seguindo <span class="badge badge-pill badge-dark ml-1"><%= user.following.count %></span></p>
     </div>
-  </div>
+  <% end %>
 </div>

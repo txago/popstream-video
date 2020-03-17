@@ -1,28 +1,36 @@
-<div class="container">
-  <div class="profile">
-    <div class="d-flex align-items-center mt-3">
+<!-- page container -->
+<div class="container-fluid mb-4">
+  <!-- page title -->
+  <div class="row d-flex justify-content-center my-4">
+    <div class="col-12 text-center">
       <% if current_user.photo.attached? == true %>
-        <%= cl_image_tag current_user.photo.key, height: 300, width: 300, crop: :fill, class: "avatar-profile" %>
+        <%= cl_image_tag current_user.photo.key, height: 400, width: 400, crop: :fill, class: "avatar-profile mb-3" %>
       <% else %>
-        <%= image_tag "https://api.adorable.io/avatars/80/abott@adorable.png", class: "avatar-profile" %>
+        <%= image_tag "blank-profile-picture-973460_1280.jpg", class: "avatar-profile mb-3" %>
       <% end %>
-      <h3><%= @user.nick %> </h3>
-    </div>
-    <div class="mt-5">
-      <span class="pr-3"> Seguidores: <%= @user.followers.count %></span>
-      <span> Seguindo: <%= @user.following.count %> </span>
+      <h1 class="title mb-2"><%= @user.nick %></h1>
+      <div class="mb-4">
+        <span class="mx-2">Seguidores <span class="badge badge-pill badge-dark ml-1"><%= @user.followers.count %></span></span>
+        <span class="mx-2">Seguindo <span class="badge badge-pill badge-dark ml-1"><%= @user.following.count %></span></span>
+      </div>
     </div>
   </div>
-
-  <div class="movies mt-5">
+  <!-- card grid -->
+  <div class="row justify-content-center">
     <!-- single card loop -->
-      <div class="row mt-5">
-        <% @user.movies.each do |movie| %>
+    <% if @user.movies.length.positive? %>
+      <% @user.movies.each do |movie| %>
         <div class="col-6 col-sm-6 col-md-3 col-lg-2">
           <%= render 'shared/movie_card', movie: movie, favorite: '<i class="fas fa-star"></i>', favorited: '<i class="far fa-star"></i>' %>
         </div>
-        <% end %>
+      <% end %>
+    <% elsif %>
+      <div class="col-12 text-center">
+        <p class="lead">🍿Nenhum filme favoritado.</p>
       </div>
+    <% end %>
     <!-- end single card loop -->
   </div>
+  <!-- end card grid -->
 </div>
+<!-- end container -->
