@@ -1,7 +1,24 @@
-<div class="container">
-  <ul>
+<!-- page container -->
+<div class="container-fluid mb-4">
+  <!-- page title -->
+  <div class="row d-flex justify-content-center my-4">
+    <div class="col-12 text-center">
+      <h1 class="title">Usuários</h1>
+    </div>
+  </div>
+  <!-- grid -->
+  <div class="users row justify-content-center">
+    <!-- single user loop -->
     <% @users.each do |user| %>
       <%= render 'user', user: user %>
     <% end %>
-  </ul>
+    <!-- end single user loop -->
+  </div>
+  <!-- end grid -->
 </div>
+<!-- end container -->
+
+
+
+
+
