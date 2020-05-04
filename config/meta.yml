@@ -1,0 +1,4 @@
+meta_product_name: 'popstream'
+meta_title: 'popstream - Encontre os melhores filmes nas plataformas de stream'
+meta_description: 'Chega de comer toda a pipoca enquanto você procura por aquele filme! No popstream você encontra as melhores sugestões de filme de acordo com o seu gosto pessoal ou momento.'
+meta_image: 'meta-cover.png' # should exist in `app/assets/images/`
