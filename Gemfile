@@ -20,7 +20,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary'
 gem 'country_select', '~> 3.1', '>= 3.1.1'
-gem 'shrine', '~> 3.0'
+gem 'shrine', '~> 3.3'
 gem 'shrine-cloudinary', '~> 1.1'
 #get stream
 #https://github.com/GetStream/stream-rails
